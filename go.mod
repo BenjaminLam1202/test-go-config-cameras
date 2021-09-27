@@ -1,1 +1,1 @@
-module "github.com/fedge247/go-config-cameras"
+module "github.com/BenjaminLam1202/test-go-config-cameras"

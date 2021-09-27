@@ -3,9 +3,10 @@ package client
 import (
 	"encoding/xml"
 	"fmt"
-	"github.com/fedge247/go-config-cameras/hkvision/types/streaming"
 	"net/http"
 	"net/url"
+
+	"github.com/BenjaminLam1202/test-go-config-cameras/hkvision/types/streaming"
 )
 
 /**
@@ -15,7 +16,7 @@ import (
 
 /*
 	It is used to get a device streaming status.
- */
+*/
 func (cli *Client) StreamingStatus() (streaming.StreamStatus, error) {
 	var req http.Request
 	req.URL = &url.URL{Scheme: cli.proto, Host: cli.host, Path: cli.getAPIPath("/ISAPI/Streaming/status", nil)}

@@ -4,10 +4,11 @@ import (
 	"bytes"
 	"encoding/xml"
 	"fmt"
-	"github.com/fedge247/go-config-cameras/hkvision/types/streaming"
 	"io/ioutil"
 	"net/http"
 	"net/url"
+
+	"github.com/BenjaminLam1202/test-go-config-cameras/hkvision/types/streaming"
 )
 
 /**
@@ -120,7 +121,7 @@ func (cli *Client) GetSingleStreamChannel(id string) (streaming.StreamChannel, e
 
 /*
 It is used to update the properties of a particular streaming channel for the device.
- */
+*/
 func (cli *Client) UpdateSingleStreamChannel(id string, streamChannel streaming.StreamChannel) error {
 	var req http.Request
 	req.URL = &url.URL{Scheme: cli.proto, Host: cli.host, Path: cli.getAPIPath(fmt.Sprintf("/ISAPI/Streaming/channels/%s", id), nil)}
@@ -163,5 +164,3 @@ func (cli *Client) DeleteSingleStreamChannel(id string) error {
 	}
 	return err
 }
-
-

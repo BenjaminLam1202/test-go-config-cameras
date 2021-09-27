@@ -2,43 +2,45 @@ package client
 
 import (
 	"fmt"
-	digestauth "github.com/fedge247/go-config-cameras/hkvision/digest-auth"
-	"github.com/fedge247/go-config-cameras/hkvision/types"
 	"net/url"
 	"path"
+
+	digestauth "github.com/BenjaminLam1202/test-go-config-cameras/hkvision/digest-auth"
+	"github.com/BenjaminLam1202/test-go-config-cameras/hkvision/types"
 )
 
 /**
  * @author : Donald Trieu
  * @created : 9/24/21, Friday
 **/
-const  (
+const (
 	DefaultProtocol = "http"
-	DefaultHost = "0.0.0.0"
+	DefaultHost     = "0.0.0.0"
 )
+
 type Client struct {
-	proto string
-	host string
-	path string
+	proto    string
+	host     string
+	path     string
 	username string
 	password string
-	client *digestauth.DigestTransport
+	client   *digestauth.DigestTransport
 }
 
 func NewClient(opts types.ConstructClient) (*Client, error) {
 	client := digestauth.NewTransport(opts.Username, opts.Password)
 	c := &Client{
-		proto: opts.Proto,
-		host: opts.Host,
-		path: opts.Path,
+		proto:    opts.Proto,
+		host:     opts.Host,
+		path:     opts.Path,
 		username: opts.Username,
 		password: opts.Password,
-		client: &client,
+		client:   &client,
 	}
 	if opts.Proto == "" {
 		c.proto = DefaultProtocol
 	}
-	if opts.Host == ""{
+	if opts.Host == "" {
 		c.host = DefaultHost
 	}
 	return c, nil
@@ -53,11 +55,8 @@ func (cli *Client) getURL() string {
 	if cli.proto != "" {
 		cli.proto = DefaultProtocol
 	}
-	if cli .host != ""{
+	if cli.host != "" {
 		cli.host = DefaultHost
 	}
 	return fmt.Sprintf("%s://%s", cli.proto, cli.host)
 }
-
-
-

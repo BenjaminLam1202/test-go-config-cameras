@@ -4,8 +4,8 @@ import (
 	"encoding/json"
 	"strconv"
 
-	"github.com/fedge247/go-config-cameras/hkvision/client"
-	"github.com/fedge247/go-config-cameras/hkvision/types"
+	"github.com/BenjaminLam1202/test-go-config-cameras/hkvision/client"
+	"github.com/BenjaminLam1202/test-go-config-cameras/hkvision/types"
 
 	"log"
 )

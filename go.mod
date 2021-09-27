@@ -1,0 +1,1 @@
+module "github.com/fedge247/go-config-cameras"

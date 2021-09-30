@@ -111,7 +111,7 @@ func main() {
 	newClient, _ := client.NewClient(types.ConstructClient{
 		Username: "admin",
 		Password: "AI_team123",
-		Host:     "192.168.1.150",
+		Host:     "192.168.1.152",
 		Proto:    "http",
 	})
 	// channels, err := newClient.GetStreamChannels()
@@ -147,6 +147,7 @@ func main() {
 	//2020-12-31T00:00:00+07:00
 	//2021-10-29T15:35:27+07:00
 	*channel.ONVIF.Enable = true
+	// *channel.ONVIF.Enable = true
 	// s1, _ := time.Parse(layout, "Feb 4, 2014 at 6:05pm (PST)")
 	// fmt.Println(s1)
 	// channel.Video.SVC.Enabled = false

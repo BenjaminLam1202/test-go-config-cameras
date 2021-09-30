@@ -6,11 +6,7 @@ package onvif
 **/
 type Integrate struct {
 	ONVIF *ONVIF `xml:"ONVIF" json:"ONVIF"`
-	ISAPI *ISAPI `xml:"ISAPI" json:"ISAPI"`
 }
 type ONVIF struct {
-	Enable *bool `xml:"enable" json:"enable"`
-}
-type ISAPI struct {
 	Enable *bool `xml:"enable" json:"enable"`
 }

@@ -10,31 +10,27 @@ import (
 
 	// streaming "github.com/BenjaminLam1202/test-go-config-cameras/hkvision/types/streaming"
 
-	time_streaming "github.com/BenjaminLam1202/test-go-config-cameras/hkvision/types/time"
+	"github.com/BenjaminLam1202/test-go-config-cameras/hkvision/types/onvif"
 )
 
 /**
  * @author : Benjamin Lam
  * @created : 9/29/21, Friday
 **/
-
-/*
-It is used to get the properties of streaming channels for the device.
-*/
-func (cli *Client) GetTimeStreamChannels() (time_streaming.Time, error) {
+func (cli *Client) GetIntegrate() (onvif.Integrate, error) {
 	var req http.Request
-	req.URL = &url.URL{Scheme: cli.proto, Host: cli.host, Path: cli.getAPIPath("/ISAPI/System/time", nil)}
+	req.URL = &url.URL{Scheme: cli.proto, Host: cli.host, Path: cli.getAPIPath("/ISAPI/System/Network/Integrate", nil)}
 	req.Method = http.MethodGet
 	var resp *http.Response
 	var err error
 	if resp, err = cli.client.RoundTrip(&req); err != nil {
-		return time_streaming.Time{}, err
+		return onvif.Integrate{}, err
 	}
-	var response time_streaming.Time
+	var response onvif.Integrate
 	err = xml.NewDecoder(resp.Body).Decode(&response)
 	if nil != err {
 		fmt.Println("Error unmarshalling from XML", err)
-		return time_streaming.Time{}, err
+		return onvif.Integrate{}, err
 	}
 	return response, err
 }
@@ -42,15 +38,15 @@ func (cli *Client) GetTimeStreamChannels() (time_streaming.Time, error) {
 /*
 It is used to update the properties of streaming time for the device.
 */
-func (cli *Client) PutTimeStreamChannels(time_streaming time_streaming.Time) error {
+func (cli *Client) PutIntegrate(ovif onvif.Integrate) error {
 	var req http.Request
-	req.URL = &url.URL{Scheme: cli.proto, Host: cli.host, Path: cli.getAPIPath("/ISAPI/System/time", nil)}
+	req.URL = &url.URL{Scheme: cli.proto, Host: cli.host, Path: cli.getAPIPath("/ISAPI/System/Network/Integrate", nil)}
 	req.Method = http.MethodPut
 	req.Header = map[string][]string{
 		"Content-Type": {"text/xml"},
 	}
 	var err error
-	xmlData, err := xml.Marshal(time_streaming)
+	xmlData, err := xml.Marshal(ovif)
 	if err != nil {
 		return err
 	}

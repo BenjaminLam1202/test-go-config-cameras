@@ -130,7 +130,7 @@ func main() {
 	// *channel.Video.FixedQuality = 40
 	// channel.LocalTime = "2021-10-29T15:10:33+07:00"
 	// channel.CarrierInterval = 0
-	// channel.SatelliteInterval = 0
+	// channel.SatelliteInterval = 2
 
 	// s1 := GetDateFromString(0, 0, 0, 0, 0, 0, "")
 	// channel.LocalTime = "2004-09-01T13:56:37+07:00"
